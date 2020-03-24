@@ -17,7 +17,7 @@ const cidrOverlapped = require('cidr-overlapped')
 
 ## Example
 ```javascript
-cidrOverlapped(['172.22.2.0/24'], '172.22.2.0/24') // 172.22.2.0/24
+cidrOverlapped(['172.22.2.0/24'], '172.22.2.0/24') // true
 
 cidrOverlapped(['172.22.2.0/24'], '172.22.3.0/24') // false
 ```
@@ -29,11 +29,11 @@ cidrOverlapped(['172.22.2.0/24'], '172.22.3.0/24') // false
 ```html
 <script src="cidrOverlapped.js"></script>
 <script>
-    console.log(cidrOverlapped(['172.22.2.0/24'], '172.22.2.0/24')) // 172.22.2.0/24
+    console.log(cidrOverlapped(['172.22.2.0/24'], '172.22.2.0/24')) // true
 </script>
 ```
 
 # cidrOverlapped
 cidrOverlapped(subnets, subnet)
 - `subnets`: List of existing subnets
-- `subnet`: Subnet to check for duplicates
+- `subnet`: Subnet to check for overlap
