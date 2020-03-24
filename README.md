@@ -35,5 +35,5 @@ cidrOverlapped(['172.22.2.0/24'], '172.22.3.0/24') // false
 
 # cidrOverlapped
 cidrOverlapped(subnets, subnet)
-- `subnets`: List of existing subnets
-- `subnet`: Subnet to check for overlap
+- `subnets`: (**Array**) List of existing subnets
+- `subnet`: (**String**) Subnet to check for overlap
