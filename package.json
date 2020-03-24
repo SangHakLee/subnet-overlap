@@ -1,16 +1,23 @@
 {
   "name": "cidr-overlapped",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Check if cidr overlapped.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/index.spec.js",
     "coverage": "nyc --check-coverage npm run test",
     "coverage:report": "nyc --reporter=html npm run test",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "build:browser": "npm run browserify && npm run babel && npm run uglify && npm run build:browser:copy",
+    "build:browser:clean": "rm ./dist/cidrOverlapped* && rm ./cidrOverlapped.*",
+    "browserify": "browserify ./dist/cidr-overlapped.js > ./dist/cidrOverlapped.js",
+    "babel": "babel ./dist/cidrOverlapped.js --out-file ./dist/cidrOverlapped.transpile.js",
+    "uglify": "uglifyjs ./dist/cidrOverlapped.transpile.js > ./dist/cidrOverlapped.min.js",
+    "build:browser:copy": "cp ./dist/cidrOverlapped.transpile.js ./cidrOverlapped.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -32,10 +39,17 @@
     "netaddr": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "browserify": "^16.5.0",
     "coveralls": "^3.0.11",
     "mocha": "^7.1.1",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^15.0.0",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "uglify-js": "^3.8.0"
   }
 }

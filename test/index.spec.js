@@ -16,7 +16,7 @@ describe('cidrOverlapped', () => {
     overlapped.forEach((v) => {
         it(`Overlapped: (${JSON.stringify(v[0])}, ${v[1]})`, () => {
             const r = cidrOverlapped(...v)
-            r.should.be.String()
+            r.should.be.True()
         })
     })
     
