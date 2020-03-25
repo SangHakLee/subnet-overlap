@@ -1,7 +1,7 @@
 {
-  "name": "cidr-overlapped",
-  "version": "0.2.1",
-  "description": "Check if cidr overlapped.",
+  "name": "subnet-overlap",
+  "version": "1.0.0",
+  "description": "Check if subnet overlapped.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/index.spec.js",
@@ -9,11 +9,11 @@
     "coverage:report": "nyc --reporter=html npm run test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "build:browser": "npm run browserify && npm run babel && npm run uglify && npm run build:browser:copy",
-    "build:browser:clean": "rm ./dist/cidrOverlapped* && rm ./cidrOverlapped.*",
-    "browserify": "browserify ./dist/cidr-overlapped.js > ./dist/cidrOverlapped.js",
-    "babel": "babel ./dist/cidrOverlapped.js --out-file ./dist/cidrOverlapped.transpile.js",
-    "uglify": "uglifyjs ./dist/cidrOverlapped.transpile.js > ./dist/cidrOverlapped.min.js",
-    "build:browser:copy": "cp ./dist/cidrOverlapped.transpile.js ./cidrOverlapped.js"
+    "build:browser:clean": "rm ./dist/subnetOverlap* && rm ./subnetOverlap.*",
+    "browserify": "browserify ./dist/subnet-overlap.js > ./dist/subnetOverlap.js",
+    "babel": "babel ./dist/subnetOverlap.js --out-file ./dist/subnetOverlap.transpile.js",
+    "uglify": "uglifyjs ./dist/subnetOverlap.transpile.js > ./dist/subnetOverlap.min.js",
+    "build:browser:copy": "cp ./dist/subnetOverlap.transpile.js ./subnetOverlap.js"
   },
   "files": [
     "index.js",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SangHakLee/cidr-overlapped.git"
+    "url": "git+https://github.com/SangHakLee/subnet-overlap.git"
   },
   "keywords": [
     "javascript",
@@ -32,7 +32,7 @@
   "author": "sanghaklee, <leesanghak7298@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SangHakLee/cidr-overlapped/issues"
+    "url": "https://github.com/SangHakLee/subnet-overlap/issues"
   },
   "dependencies": {
     "ip-cidr": "^2.0.8",

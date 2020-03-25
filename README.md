@@ -1,25 +1,25 @@
-# cidr-overlapped
+# subnet-overlap
 
-[![npm version](https://badge.fury.io/js/cidr-overlapped.svg)](https://badge.fury.io/js/cidr-overlapped)
+[![npm version](https://badge.fury.io/js/subnet-overlap.svg)](https://badge.fury.io/js/subnet-overlap)
 
 
-[![NPM](https://nodei.co/npm/cidr-overlapped.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cidr-overlapped/)
+[![NPM](https://nodei.co/npm/subnet-overlap.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/subnet-overlap/)
 
 
 # Node.js
 ## Install
 ```bash
-$ npm i cidr-overlapped
+$ npm i subnet-overlap
 ```
 ```javascript
-const cidrOverlapped = require('cidr-overlapped')
+const subnetOverlap = require('subnet-overlap')
 ```
 
 ## Example
 ```javascript
-cidrOverlapped(['172.22.2.0/24'], '172.22.2.0/24') // true
+subnetOverlap(['172.22.2.0/24'], '172.22.2.0/24') // true
 
-cidrOverlapped(['172.22.2.0/24'], '172.22.3.0/24') // false
+subnetOverlap(['172.22.2.0/24'], '172.22.3.0/24') // false
 ```
 
 
@@ -27,13 +27,13 @@ cidrOverlapped(['172.22.2.0/24'], '172.22.3.0/24') // false
 
 ## Example
 ```html
-<script src="cidrOverlapped.js"></script>
+<script src="subnetOverlap.js"></script>
 <script>
-    console.log(cidrOverlapped(['172.22.2.0/24'], '172.22.2.0/24')) // true
+    console.log(subnetOverlap(['172.22.2.0/24'], '172.22.2.0/24')) // true
 </script>
 ```
 
-# cidrOverlapped
-cidrOverlapped(subnets, subnet)
+# subnetOverlap
+subnetOverlap(subnets, subnet)
 - `subnets`: (**Array**) List of existing subnets
 - `subnet`: (**String**) Subnet to check for overlap

@@ -1,1 +1,1 @@
-module.exports = require('./src/cidr-overlapped')
+module.exports = require('./src/subnet-overlap')
