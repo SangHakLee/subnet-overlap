@@ -31,11 +31,16 @@
     "ip",
     "network"
   ],
-  "author": "sanghaklee, <leesanghak7298@gmail.com>",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "author": "sanghaklee, <code.ryan.lee@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SangHakLee/subnet-overlap/issues"
   },
+  "homepage": "https://sanghaklee.github.io/subnet-overlap",
   "dependencies": {
     "ip-cidr": "^2.0.8",
     "netaddr": "^1.1.0"
