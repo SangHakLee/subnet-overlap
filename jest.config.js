@@ -4,7 +4,7 @@ module.exports = {
 	testEnvironment: 'node',
 	roots: ['<rootDir>/test'],
 	testMatch: ['**/*.test.ts'],
-	testPathIgnorePatterns: ['/node_modules/', 'browser.test.ts'],
+	testPathIgnorePatterns: ['/node_modules/'],
 	collectCoverageFrom: [
 		'src/**/*.ts',
 		'index.ts',

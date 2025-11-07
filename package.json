@@ -9,7 +9,7 @@
     "build:browser": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:browser": "jest --config jest.config.browser.js",
+    "test:browser": "RUN_BROWSER_TESTS=true jest test/browser.test.ts",
     "coverage": "jest --coverage",
     "lint": "eslint '**/*.{ts,js,mjs}'",
     "lint:fix": "eslint '**/*.{ts,js,mjs}' --fix",
