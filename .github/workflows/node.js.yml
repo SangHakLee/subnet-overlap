@@ -54,6 +54,7 @@ jobs:
           fail_ci_if_error: false
 
   docs:
+    name: Generate Documentation
     needs: test
     runs-on: ubuntu-latest
 

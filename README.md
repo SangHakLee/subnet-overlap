@@ -1,8 +1,11 @@
 # subnet-overlap
 
 [![npm version](https://badge.fury.io/js/subnet-overlap.svg)](https://badge.fury.io/js/subnet-overlap)
-[![Node.js CI](https://github.com/SangHakLee/subnet-overlap/workflows/Node.js%20CI/badge.svg)](https://github.com/SangHakLee/subnet-overlap/actions)
+[![CI](https://github.com/SangHakLee/subnet-overlap/actions/workflows/node.js.yml/badge.svg)](https://github.com/SangHakLee/subnet-overlap/actions/workflows/node.js.yml)
 [![codecov](https://codecov.io/gh/SangHakLee/subnet-overlap/branch/master/graph/badge.svg)](https://codecov.io/gh/SangHakLee/subnet-overlap)
+[![semantic-release: conventionalcommits](https://img.shields.io/badge/semantic--release-conventionalcommits-1890ff?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+
+[![NPM](https://nodei.co/npm/subnet-overlap.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/is-0/)
 
 Check if subnets overlap with existing subnets. Works in both Node.js and browser environments.
 

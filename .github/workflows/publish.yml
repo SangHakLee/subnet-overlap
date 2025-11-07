@@ -1,11 +1,16 @@
 name: Publish Package
 
 on:
-  release:
-    types: [published]
+  # 태그 푸시 (PAT로 생성된 것만 작동)
   push:
     tags:
       - 'v*'
+
+  # ⭐ Release 이벤트 (semantic-release와 호환)
+  release:
+    types: [published]
+
+  # ⭐ 수동 실행
   workflow_dispatch:
 
 permissions:
@@ -14,11 +19,23 @@ permissions:
 
 jobs:
   publish:
+    name: Publish to npm and GitHub
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            VERSION="${{ github.event.release.tag_name }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "📦 Publishing version: ${VERSION}"
 
       - name: Setup Node.js for npm
         uses: actions/setup-node@v4
@@ -32,32 +49,42 @@ jobs:
           HUSKY: 0
         run: npm ci
 
-      - name: Build TypeScript
+      - name: Build
         run: npm run build
 
-      - name: Build browser bundle
-        run: npm run build:browser
-
-      - name: Run tests
-        run: npm test
-
+      # npm 배포 (NPM_TOKEN이 있을 때만)
       - name: Publish to npm
-        if: env.NPM_TOKEN != ''
+        if: ${{ vars.NPM_TOKEN_EXISTS == 'true' }}
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
         continue-on-error: true
 
-      - name: Setup Node.js for GitHub Packages
+      # GitHub Packages 배포
+      - name: Setup for GitHub Packages
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@${{ github.repository_owner }}'
 
       - name: Publish to GitHub Packages
+        run: |
+          # npm과 동일한 패키지명 사용
+          PACKAGE_NAME="subnet-overlap"
+          REPO_OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "📦 Publishing as @${REPO_OWNER}/${PACKAGE_NAME}"
+
+          # package.json의 name 필드를 동적으로 수정
+          node -e "
+            const fs = require('fs');
+            const pkg = require('./package.json');
+            pkg.name = '@${REPO_OWNER}/${PACKAGE_NAME}';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+            console.log('Package name updated to:', pkg.name);
+          "
+
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish --access public
-        continue-on-error: true
+
+      # GitHub Release는 이미 semantic-release가 생성했으므로 생략
