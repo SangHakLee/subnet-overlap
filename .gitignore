@@ -1,6 +1,10 @@
-# IDE'
+# IDE
 .idea
 .vscode
+
+# Build output
+dist/
+docs/
 
 # coverage
 .coveralls.yml

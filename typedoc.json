@@ -1,0 +1,18 @@
+{
+	"entryPoints": ["src/subnet-overlap.ts"],
+	"out": "docs",
+	"exclude": [
+		"**/node_modules/**",
+		"**/test/**",
+		"**/*.test.ts",
+		"**/*.spec.ts"
+	],
+	"excludePrivate": true,
+	"excludeProtected": true,
+	"excludeExternals": true,
+	"readme": "README.md",
+	"name": "subnet-overlap",
+	"includeVersion": true,
+	"sort": ["source-order"],
+	"plugin": []
+}
