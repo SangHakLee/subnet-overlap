@@ -2,7 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": ["node", "jest"],
-    "lib": ["ES2015", "DOM"]
+    "lib": ["ES2015", "DOM"],
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*", "index.ts", "test/**/*"]
+  "include": ["src/**/*", "index.ts", "test/**/*"],
+  "exclude": ["node_modules"]
 }
