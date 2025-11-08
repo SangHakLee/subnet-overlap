@@ -32,7 +32,7 @@
     "network"
   ],
   "engines": {
-    "node": ">=18.14.0",
+    "node": ">=18.18.0",
     "npm": ">=9.0.0"
   },
   "author": "sanghaklee, <code.ryan.lee@gmail.com>",
@@ -42,7 +42,6 @@
   },
   "homepage": "https://sanghaklee.github.io/subnet-overlap",
   "dependencies": {
-    "ip-cidr": "^2.0.8",
     "netaddr": "^1.1.0"
   },
   "devDependencies": {
