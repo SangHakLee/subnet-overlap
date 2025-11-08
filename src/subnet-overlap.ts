@@ -1,16 +1,5 @@
-// Type definitions for external dependencies
-interface AddrInstance {
-	intersect(other: AddrInstance): AddrInstance | null
-	toString(): string
-}
-
-interface AddrConstructor {
-	(cidr: string): AddrInstance
-}
-
 // Import dependencies
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const Addr: AddrConstructor = require('netaddr').Addr
+import { Addr } from 'netaddr'
 
 /**
  * Check if a subnet overlaps with any existing subnets
@@ -44,11 +33,5 @@ function subnetOverlap(existedCidrs: string[], nowCidr: string): boolean {
 	return false
 }
 
-// Export for both ESM and CommonJS
-export { subnetOverlap }
+// Export as default for browser bundle compatibility
 export default subnetOverlap
-
-// CommonJS compatibility
-module.exports = subnetOverlap
-module.exports.subnetOverlap = subnetOverlap
-module.exports.default = subnetOverlap

@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
+import nodePolyfills from 'rollup-plugin-polyfill-node'
 
 const config = [
 	// UMD build (non-minified)
@@ -11,14 +12,24 @@ const config = [
 			file: 'dist/browser/subnetOverlap.js',
 			format: 'umd',
 			name: 'subnetOverlap',
-			sourcemap: true
+			sourcemap: true,
+			exports: 'default'
 		},
 		plugins: [
+			nodePolyfills(),
 			resolve({
 				browser: true,
-				preferBuiltins: false
+				preferBuiltins: false,
+				// Include dependencies in bundle for standalone usage
+				exportConditions: ['browser', 'module', 'import', 'default', 'require'],
+				// Look in node_modules for dependencies
+				moduleDirectories: ['node_modules']
 			}),
-			commonjs(),
+			commonjs({
+				// Convert CommonJS modules (like netaddr) to ES modules
+				include: /node_modules/,
+				requireReturnsDefault: 'auto'
+			}),
 			typescript({
 				tsconfig: './tsconfig.json',
 				compilerOptions: {
@@ -37,14 +48,24 @@ const config = [
 			file: 'dist/browser/subnetOverlap.min.js',
 			format: 'umd',
 			name: 'subnetOverlap',
-			sourcemap: true
+			sourcemap: true,
+			exports: 'default'
 		},
 		plugins: [
+			nodePolyfills(),
 			resolve({
 				browser: true,
-				preferBuiltins: false
+				preferBuiltins: false,
+				// Include dependencies in bundle for standalone usage
+				exportConditions: ['browser', 'module', 'import', 'default', 'require'],
+				// Look in node_modules for dependencies
+				moduleDirectories: ['node_modules']
 			}),
-			commonjs(),
+			commonjs({
+				// Convert CommonJS modules (like netaddr) to ES modules
+				include: /node_modules/,
+				requireReturnsDefault: 'auto'
+			}),
 			typescript({
 				tsconfig: './tsconfig.json',
 				compilerOptions: {

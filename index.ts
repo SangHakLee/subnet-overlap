@@ -1,6 +1,9 @@
-export { subnetOverlap } from './src/subnet-overlap'
+// Re-export as named export for npm package users
+import subnetOverlap from './src/subnet-overlap'
+export { subnetOverlap }
+export default subnetOverlap
 
-// Default export for CommonJS compatibility
-import { subnetOverlap } from './src/subnet-overlap'
+// CommonJS compatibility
 module.exports = subnetOverlap
 module.exports.subnetOverlap = subnetOverlap
+module.exports.default = subnetOverlap
