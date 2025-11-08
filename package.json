@@ -32,8 +32,8 @@
     "network"
   ],
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=10.0.0"
+    "node": ">=18.14.0",
+    "npm": ">=9.0.0"
   },
   "author": "sanghaklee, <code.ryan.lee@gmail.com>",
   "license": "MIT",
