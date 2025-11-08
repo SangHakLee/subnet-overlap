@@ -4,7 +4,11 @@ module.exports = {
 	testEnvironment: 'node',
 	roots: ['<rootDir>/test'],
 	testMatch: ['**/*.test.ts'],
-	testPathIgnorePatterns: ['/node_modules/'],
+	testPathIgnorePatterns: [
+		'/node_modules/',
+		// Skip browser tests in CI to avoid Puppeteer/Chrome issues on Windows
+		...(process.env.CI ? ['browser.test.ts'] : [])
+	],
 	collectCoverageFrom: [
 		'src/**/*.ts',
 		'index.ts',
