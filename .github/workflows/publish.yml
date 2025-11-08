@@ -69,8 +69,8 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          # npm과 동일한 패키지명 사용
-          PACKAGE_NAME="subnet-overlap"
+          # package.json에서 패키지명 가져오기
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
           REPO_OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           echo "📦 Publishing as @${REPO_OWNER}/${PACKAGE_NAME}"
 
