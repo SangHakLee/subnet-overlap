@@ -11,8 +11,8 @@
     "test:watch": "jest --watch",
     "test:browser": "RUN_BROWSER_TESTS=true jest test/browser.test.ts",
     "coverage": "jest --coverage",
-    "lint": "eslint '**/*.{ts,js,mjs}'",
-    "lint:fix": "eslint '**/*.{ts,js,mjs}' --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "typedoc": "typedoc",
     "prepare": "husky",
     "prepublishOnly": "npm run build && npm run build:browser && npm test"
